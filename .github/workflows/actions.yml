@@ -3,6 +3,7 @@ name: run trigger_test.py
 on:
   schedule:
     - cron: "0 * * * *" # run per hour
+  workflow_dispatch: # Enable manual triggering
 
 jobs:
   build:
