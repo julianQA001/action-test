@@ -16,30 +16,23 @@ jobs:
         with:
           python-version: "3.12" # install the python version needed
 
-      - name: Debug directory
+      - name: Create requirements.txt
         run: |
-          pwd
-          ls -la
-          cd ${{ github.workspace }}
-          pwd
-          ls -la
+          echo "requests==2.31.0" > requirements.txt
+          cat requirements.txt
 
       - name: install python packages
         run: |
-          cd ${{ github.workspace }}
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: execute py script # run trigger_test.py
-        run: |
-          cd ${{ github.workspace }}
-          python trigger_test.py
+        run: python trigger_test.py
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
 
       - name: commit files
         run: |
-          cd ${{ github.workspace }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
