@@ -20,19 +20,26 @@ jobs:
         run: |
           pwd
           ls -la
+          cd ${{ github.workspace }}
+          pwd
+          ls -la
 
       - name: install python packages
         run: |
+          cd ${{ github.workspace }}
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: execute py script # run trigger_test.py
+        run: |
+          cd ${{ github.workspace }}
+          python trigger_test.py
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
-        run: python trigger_test.py
 
       - name: commit files
         run: |
+          cd ${{ github.workspace }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
