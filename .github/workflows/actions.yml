@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content to github runner
+        uses: actions/checkout@v4 # checkout the repository content to github runner
+
+      - name: Debug - Show current working directory and files
+        run: |
+          echo "PWD: $(pwd)"
+          ls -al
 
       - name: setup python
         uses: actions/setup-python@v4
         with:
           python-version: "3.12" # install the python version needed
-
-      - name: Create requirements.txt
-        run: |
-          echo "requests==2.31.0" > requirements.txt
-          cat requirements.txt
 
       - name: install python packages
         run: |
