@@ -1,9 +1,9 @@
 name: run trigger_test.py
 
-on:
-  schedule:
-    - cron: "0 * * * *" # run per hour
-  workflow_dispatch: # Enable manual triggering
+#on:
+#  schedule:
+#    - cron: "0 * * * *" # run per hour
+#  workflow_dispatch: # Enable manual triggering
 
 # Add permissions configuration
 permissions:
