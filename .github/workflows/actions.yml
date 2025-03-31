@@ -41,7 +41,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull origin main --rebase
+          # First commit any changes
           git add status.log
-          git commit -m "Update weather data" || exit 0
+          git commit -m "Update weather data" || true
+          # Then pull and push
+          git pull origin main --rebase
           git push origin main
